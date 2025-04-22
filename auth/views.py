@@ -15,7 +15,7 @@ from django.template.loader import render_to_string
 from xhtml2pdf import pisa
 import requests
 from bs4 import BeautifulSoup  # Install using: pip install beautifulsoup4
-
+import os
 # Create your views here.
 
 def Ackno():
@@ -277,7 +277,9 @@ def hdfcapi(request):
 
 class ViewCase(View):
     def get(self, request):
-        with open(r'D:\Projects\1930Hachathon\Helpline1930\output.json', 'r') as f:
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(BASE_DIR, 'output.json')
+        with open(file_path, 'r') as f:
             data = json.load(f)
         
         context = {
@@ -291,8 +293,11 @@ class ViewCase(View):
 
 def export_to_pdf(request):
     # Define your email body content here. You can also fetch it from a database.
-    with open(r'D:\Projects\1930Hachathon\Helpline1930\output.json', 'r') as f:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(BASE_DIR, 'output.json')
+    with open(file_path, 'r') as f:
             data = json.load(f)
+        
         
     email_body = '''
          
@@ -401,7 +406,9 @@ class EmailValidationView(View):
 
 class RegisterView(View):
     def post(self, request):
-        with open(r'D:\Projects\1930Hachathon\Helpline1930\output.json', 'r') as f:
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(BASE_DIR, 'output.json')
+        with open(file_path, 'r') as f:
             data = json.load(f)
         username = data['OBJ']['LoginId']
         password = data['OBJ']['Password']
@@ -467,8 +474,11 @@ Cybercrime Authority
         return render(request, 'auth/register.html',{'data': data})
 
     def get(self, request):
-        with open(r'D:\Projects\1930Hachathon\Helpline1930\output.json', 'r') as f:
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(BASE_DIR, 'output.json')
+        with open(file_path, 'r') as f:
             data = json.load(f)
+        
         print(data)
         # url = 'http://127.0.0.1:8000/auth/register/'  # Replace with the actual URL of your form
 
