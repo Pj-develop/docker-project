@@ -1,0 +1,197 @@
+{% extends "base_auth.html" %} {% load static %} {% block content %}
+
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+  <div class="container h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px">
+          <div class="card-body p-5">
+            <h2 class="text-uppercase text-center mb-5">Register Your Case</h2>
+            {% include 'partials/_messages.html' %}
+          
+
+            <form action={% url 'register'%} method="post">
+              {% csrf_token %}
+              <div class="form-outline mb-4">
+                <input
+                  value="{{data.OBJ.LoginId}}"
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  id="name"
+                  class="form-control form-control-lg"
+                />
+              </div>
+              <div class="form-outline mb-4">
+              <input
+                  type="text"
+                  name="UID"
+                  value="{{data.OBJ.UID}}"
+                  placeholder="Any Document No. like Aadhar Card, Voter Id, etc."
+                  id="UID"
+                  class="form-control form-control-lg"
+                />
+              </div>
+                <div class="form-outline mb-4">
+              <input
+                  type="text"
+                  name="sus"
+                  value="{{data.OBJ.SuspectedPerson}}"
+                  placeholder="Suspected Person"
+                  id="sus"
+                  class="form-control form-control-lg"
+                />
+                </div>
+                <div class="form-outline mb-4">
+              <input
+                  type="text"
+                  name="Date"
+                  value="{{data.OBJ.Date}}"
+                  id="date"
+                  class="form-control form-control-lg"
+                />
+                </div>
+                <div class="form-outline mb-4">
+                  <input
+                      type="text"
+                      name="brief2"
+                      value="{{data.OBJ.brief2}}"
+                      id="brief2"
+                      placeholder="Tell About Your Case................."
+                      class="form-control form-control-lg"
+                      style="height: 400px; width: 530px;"
+                    />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input
+                          type="number"
+                          name="mob"
+                          id="mob"
+                          placeholder="Mobile No."
+                          value="{{data.OBJ.MobileNo}}"
+                          class="form-control form-control-lg"
+                        />
+                        </div>
+                        <div class="form-outline mb-4">
+                          <input
+                              type="text"
+                              name="transID"
+                              id="transID"
+                              value="{{data.OBJ.TransactionId}}"
+                              placeholder="Transaction ID"
+                              class="form-control form-control-lg"
+                            />
+                            </div>
+                            <div class="form-outline mb-4">
+                              <input
+                                  type="number"
+                                  name="amount"
+                                  id="amount"
+                                  value="{{data.OBJ.Amount}}"
+                                  placeholder="Amount of Loss"
+                                  class="form-control form-control-lg"
+                                />
+                                </div>
+                                <div class="form-outline mb-4">
+                                  <input
+                                      type="text"
+                                      id="SubCat"
+                                      value="{{data.OBJ.SubCat}}"
+                                      placeholder="Amount of Loss"
+                                      class="form-control form-control-lg"
+                                    />
+                                    </div>
+
+                            
+                
+                <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="username"
+                  value="{{data.OBJ.LoginId}}"
+                  name="username"
+                  placeholder="Username"
+                  class="form-control form-control-lg"
+                />
+                <div class="invalid-feedback" style="display: none"></div>
+              </div>
+              <p class="text-sm text-success usernamesuccess"></p>
+
+              <div class="form-outline mb-4">
+                <input
+                  type="email"
+                  id="email"
+                  value="{{data.OBJ.EmailId}}"
+                  name="email"
+                  placeholder="Email"
+                  class="form-control form-control-lg"
+                />
+              </div>
+              <div class="invalid-feedback2" style="display: none"></div>
+
+              <div class="form-outline mb-4">
+                <input
+                  type="password"
+                  name="password"
+                  value="{{data.OBJ.Password}}"
+                  placeholder="Password"
+                  id="password"
+                  class="form-control form-control-lg"
+                />
+              </div>
+
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="repassword"
+                  value="{{data.OBJ.Password}}"
+                  placeholder="Repeat Password"
+                  class="form-control form-control-lg"
+                />
+              </div>
+
+              <div class="form-check d-flex justify-content-center mb-5">
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  value=""
+                  id="terms"
+                  checked
+                  required
+                />
+                <label class="form-check-label" for="terms">
+                  I agree all statements in
+                  <abbr class="text-body" title="IT Act 2021"
+                    ><u>Terms of service</u></abbr
+                  >
+                </label>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <input
+                  value="Register"
+                  type="submit"
+                  id="submitbtn"
+                  class="btn btn-success btn-block btn-lg gradient-custom-4 text-body submit-btn"
+                >
+                
+              </input>
+              </div>
+
+              <p class="text-center text-muted mt-5 mb-0">
+                Have already an account?
+                <a href="{% url 'login' %}" class="fw-bold text-body"><u>Login here</u></a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/register.js' %}"></script>
+
+
+{% endblock%} {% block title %}Register {% endblock%}

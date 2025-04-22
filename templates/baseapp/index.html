@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %} {% comment %}
+<h1>Index</h1>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <a href="#posat">Posts</a>
+  </li>
+  <li class="list-group-item">
+    <a href="index.php?controller=users&action=index">Users</a>
+  </li>
+</ul>
+{% endcomment %}
+<h1>Welcome to the Dashboard</h1>
+
+<div id="dash-container">
+  <iframe src="http://127.0.0.1:8050/" width="100%" height="600px"></iframe>
+</div>
+{% endblock %}

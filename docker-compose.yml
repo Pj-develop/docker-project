@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  web:
+    image: pjdevelop/helpine1930:latest
+    container_name: helpine1930web
+    ports:
+      - target: 8000
+        published: 8000
+        protocol: tcp
+        mode: host
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure
