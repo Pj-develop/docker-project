@@ -23,7 +23,7 @@ echo "$NEW_VERSION" > "$VERSION_FILE"
 
 # Build Docker images
 echo "Building Docker images..."
-docker build -t "$DOCKER_USERNAME/$API_IMAGE_NAME:latest" -t "$DOCKER_USERNAME/$API_IMAGE_NAME:$NEW_VERSION" ./api
+docker build -t "$DOCKER_USERNAME/$API_IMAGE_NAME:latest" -t "$DOCKER_USERNAME/$API_IMAGE_NAME:$NEW_VERSION" .
 
 # Push Docker images to Docker Hub
 echo "Pushing Docker images to Docker Hub..."
