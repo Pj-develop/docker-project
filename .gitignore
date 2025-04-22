@@ -4,3 +4,5 @@
 Presentation.pptx
 requirements copy.txt
 output copy.json
+.venv
+./.venv
