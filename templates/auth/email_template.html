@@ -1,20 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Email Content</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Information Report - 1930 Helpline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        line-height: 1.6;
+      }
+      .fir-document {
+        max-width: 850px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 30px;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      }
+      .letterhead {
+        text-align: center;
+        border-bottom: 2px solid #000;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+      }
+      .police-emblem {
+        max-width: 80px;
+        margin-bottom: 10px;
+      }
+      .fir-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 15px 0;
+        text-decoration: underline;
+      }
+      .address-block {
+        margin-bottom: 20px;
+      }
+      .ref-number {
+        font-weight: bold;
+        margin: 15px 0;
+      }
+      .subject-line {
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-decoration: underline;
+      }
+      .salutation {
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      .content-section {
+        margin-bottom: 25px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border: 1px solid #eee;
+        border-radius: 5px;
+      }
+      .signature-section {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .date-section {
+        margin-bottom: 20px;
+      }
+      .footer {
+        margin-top: 40px;
+        padding-top: 15px;
+        border-top: 1px solid #ddd;
+        font-size: 0.9rem;
+        color: #666;
+      }
+    </style>
   </head>
-  <body>
-    <div class="container">
+  <body class="bg-light">
+    <div class="container fir-document">
+      <!-- Letterhead -->
+      <div class="letterhead">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Police Emblem" class="police-emblem">
+        <h2>CYBER CRIME INVESTIGATION CELL</h2>
+        <h4>1930 Cyber Fraud Helpline</h4>
+        <p class="mb-0">Government of India</p>
+      </div>
+
+      <!-- Reference Number and Date -->
       <div class="row">
-        <div class="col-md-12">
-          <h1>Email Content</h1>
-          <p>{{ email_body }}</p>
+        <div class="col-md-6">
+          <p class="ref-number">Ref: CCC/FIR/{{ report_id|default:"___________" }}</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="date-section">Date: {{ report_date|default:"___________" }}</p>
         </div>
       </div>
+
+      <!-- Addressee -->
+      <div class="address-block">
+        <p>To,<br>
+        The Station House Officer (SHO),<br>
+        Phagwara Police Station,<br>
+        Punjab - 144411</p>
+      </div>
+
+      <!-- Subject -->
+      <div class="subject-line">
+        Subject: First Information Report regarding Cyber Fraud
+      </div>
+
+      <!-- Salutation -->
+      <div class="salutation">
+        Respected Sir/Madam,
+      </div>
+
+      <!-- Main Content -->
+      <div class="content-section">
+        {{ email_body|safe }}
+      </div>
+
+      <!-- Signature Block -->
+      <div class="signature-section">
+        <div>
+          <p>Yours faithfully,</p>
+          <p class="mt-4">_____________________<br>
+          Cyber Crime Investigation Cell<br>
+          1930 Helpline</p>
+        </div>
+        <div>
+          <p>Case Officer: _________________<br>
+          ID: _________________</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer text-center">
+        <p>This is an official document from the 1930 Cyber Fraud Helpline. Please retain for your records.</p>
+        <p>For verification or further assistance, contact: 1930 or helpdesk@cybercrime.gov.in</p>
+        <p><small>Cyber Crime Investigation Cell, Ministry of Home Affairs, Government of India</small></p>
+      </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
